@@ -1,5 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+    <!-- Primary Meta Tags for SEO -->
+    <meta name="description"
+        content="Mukesh Adhikari is a leading software developer and e-commerce innovator based in Tokyo, Japan, specializing in full-stack development, cloud solutions, and transforming e-commerce in Nepal. Discover his expertise in React, Node.js, Python, and scalable web applications.">
+    <meta name="keywords"
+        content="Mukesh Adhikari, software developer, e-commerce innovator, Tokyo, Japan, Nepal e-commerce, full-stack developer, React, Node.js, Python, web development, cloud solutions, scalable applications, front-end, back-end, database management, DevOps, IT consultant, technology solutions, web app development, mobile app development, PWA, database design, API development, software architecture, digital transformation">
+    <meta name="author" content="Mukesh Adhikari">
+    <meta name="robots" content="index, follow">
+    <meta name="revisit-after" content="7 days">
+    <meta name="language" content="English">
+    <meta name="generator" content="HTML5">
+    
+    <!-- Open Graph / Social Media Meta Tags (for better sharing on platforms like Facebook, LinkedIn) -->
+    <meta property="og:title" content="Mukesh Adhikari - Software Developer & E-commerce Innovator | Tokyo, Japan">
+    <meta property="og:description"
+        content="Mukesh Adhikari is a leading software developer and e-commerce innovator based in Tokyo, Japan, specializing in full-stack development, cloud solutions, and transforming e-commerce in Nepal.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="YOUR_WEBSITE_URL_HERE"> <!-- Replace with your actual website URL -->
+    <meta property="og:image" content="https://github.com/mukeshadhikary.png">
+    <!-- Replace with a high-quality image URL for sharing -->
+    <meta property="og:image:alt" content="Mukesh Adhikari Profile Picture">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card Meta Tags (for Twitter sharing) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@mukeshadhykari"> <!-- Replace with your Twitter handle -->
+    <meta name="twitter:creator" content="@mukeshadhykari"> <!-- Replace with your Twitter handle -->
+    <meta name="twitter:title" content="Mukesh Adhikari - Software Developer & E-commerce Innovator | Tokyo, Japan">
+    <meta name="twitter:description"
+        content="Mukesh Adhikari is a leading software developer and e-commerce innovator based in Tokyo, Japan, specializing in full-stack development, cloud solutions, and transforming e-commerce in Nepal.">
+    <meta name="twitter:image" content="https://github.com/mukeshadhikary.png">
+    <!-- Replace with a high-quality image URL for sharing -->
+    
+    <!-- Canonical Tag (important for preventing duplicate content issues) -->
+    <link rel="canonical" href="mukesh.adhykri.com"> <!-- Replace with your actual website URL -->
+    
+    <!-- Viewport Meta Tag (already in your code, but crucial for responsiveness) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,14 +77,19 @@
             width: 100%;
             height: 100%;
             background: radial-gradient(circle at 20% 50%, #00ffff 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, #ff00ff 0%, transparent 50%),
-                        radial-gradient(circle at 40% 80%, #ffff00 0%, transparent 50%);
+                radial-gradient(circle at 80% 20%, #ff00ff 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, #ffff00 0%, transparent 50%);
             animation: bgMove 10s ease-in-out infinite alternate;
         }
 
         @keyframes bgMove {
-            0% { transform: translateX(-50px) translateY(-50px) rotate(0deg); }
-            100% { transform: translateX(50px) translateY(50px) rotate(180deg); }
+            0% {
+                transform: translateX(-50px) translateY(-50px) rotate(0deg);
+            }
+
+            100% {
+                transform: translateX(50px) translateY(50px) rotate(180deg);
+            }
         }
 
         /* Navbar */
@@ -72,32 +116,45 @@
         }
 
         .logo {
-            font-size: 2rem;
-            font-weight: 900;
+            
+            font-size: 1rem;
+            font-weight: 500;
             background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
             animation: logoGlow 2s ease-in-out infinite alternate;
             cursor: pointer;
-            transform: perspective(500px) rotateX(15deg);
+            transform: perspective(400px) rotateX(15deg);
         }
 
         @keyframes logoGlow {
-            0% { filter: brightness(1) drop-shadow(0 0 10px #00ffff); }
-            100% { filter: brightness(1.3) drop-shadow(0 0 20px #ff00ff); }
+            0% {
+                filter: brightness(1) drop-shadow(0 0 10px #00ffff);
+            }
+
+            100% {
+                filter: brightness(1.3) drop-shadow(0 0 20px #ff00ff);
+            }
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 0;
+            gap: 0.8rem;
+            /* Gap between icons on desktop */
             background: rgba(0, 0, 0, 0.3);
             padding: 0.5rem;
             border-radius: 50px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(0, 255, 255, 0.2);
+            overflow-x: auto;
+            /* Allow horizontal scrolling on small screens */
+            white-space: nowrap;
+            /* Prevent items from wrapping */
+            justify-content: flex-end;
+            /* Align icons to the right on desktop */
         }
 
         .nav-links li {
@@ -107,7 +164,8 @@
         .nav-links a {
             color: #ffffff;
             text-decoration: none;
-            padding: 12px 24px;
+            padding: 12px 18px;
+            /* Adjusted padding for icon-only links */
             border-radius: 30px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
@@ -116,6 +174,12 @@
             letter-spacing: 1px;
             font-size: 0.9rem;
             overflow: hidden;
+            display: flex;
+            /* Ensure flex for consistent icon centering */
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            /* No gap needed as text is removed */
         }
 
         .nav-links a::before {
@@ -146,33 +210,16 @@
             box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
         }
 
-        /* Mobile Menu */
-        .mobile-menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .mobile-menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: linear-gradient(90deg, #00ffff, #ff00ff);
-            margin: 3px 0;
-            transition: 0.3s;
-            border-radius: 2px;
-        }
-
-        .mobile-menu-toggle.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-
-        .mobile-menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .mobile-menu-toggle.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
+        /* Styles for icons (SVG) within nav links */
+        .nav-icon {
+            display: block;
+            /* Always show icon */
+            width: 24px;
+            /* Set a consistent width for SVG icons */
+            height: 24px;
+            /* Set a consistent height for SVG icons */
+            fill: currentColor;
+            /* Inherit color from parent 'a' tag */
         }
 
         /* Hero Section */
@@ -203,8 +250,13 @@
         }
 
         @keyframes textGlow {
-            0% { filter: brightness(1); }
-            100% { filter: brightness(1.3); }
+            0% {
+                filter: brightness(1);
+            }
+
+            100% {
+                filter: brightness(1.3);
+            }
         }
 
         .hero h2 {
@@ -236,8 +288,13 @@
         }
 
         @keyframes profileFloat {
-            0% { transform: translateY(0px) scale(1); }
-            100% { transform: translateY(-20px) scale(1.05); }
+            0% {
+                transform: translateY(0px) scale(1);
+            }
+
+            100% {
+                transform: translateY(-20px) scale(1.05);
+            }
         }
 
         .profile-ring {
@@ -267,8 +324,13 @@
         }
 
         @keyframes ringRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         .hero-badges {
@@ -417,8 +479,13 @@
         }
 
         @keyframes avatarPulse {
-            0% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); }
-            100% { box-shadow: 0 0 40px rgba(255, 0, 255, 0.8); }
+            0% {
+                box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            }
+
+            100% {
+                box-shadow: 0 0 40px rgba(255, 0, 255, 0.8);
+            }
         }
 
         /* Skills Section */
@@ -578,34 +645,48 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: linear-gradient(135deg, rgba(0, 0, 0, 0.98), rgba(10, 25, 47, 0.98));
-                backdrop-filter: blur(20px);
-                flex-direction: column;
+            .nav-content {
+                flex-direction: row;
+                /* Logo and nav links side-by-side */
+                justify-content: space-between;
+                /* Push logo to left, nav links to right */
+                align-items: center;
+                /* Vertically center them */
                 gap: 0;
-                padding: 2rem;
-                border-radius: 0 0 20px 20px;
-                border: 1px solid rgba(0, 255, 255, 0.2);
+                /* No gap needed between logo and nav links as space-between handles it */
             }
 
-            .nav-links.active {
+            .logo {
+                margin-bottom: 0;
+                /* Remove margin-bottom as it's no longer stacked */
+                font-size: 1.5rem;
+                /* Adjust logo size for mobile */
+            }
+
+            .nav-links {
                 display: flex;
+                /* Ensure nav links are always visible on mobile */
+                width: auto;
+                /* Allow nav-links to take natural width */
+                padding: 0.3rem;
+                /* Keep existing padding for the horizontal bar */
+                border-radius: 25px;
+                /* Keep existing border radius */
+                justify-content: flex-end;
+                /* Align links to the right within its container */
+                gap: 0.5rem;
+                /* Slightly larger gap for mobile icons */
             }
 
             .nav-links a {
-                padding: 1rem 0;
-                text-align: center;
-                border-radius: 0;
-                border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+                padding: 8px 10px;
+                /* Smaller padding for individual links on mobile */
             }
 
-            .mobile-menu-toggle {
-                display: flex;
+            .nav-icon {
+                width: 20px;
+                /* Slightly smaller icons on mobile */
+                height: 20px;
             }
 
             .hero h1 {
@@ -680,14 +761,28 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         @keyframes fadeOut {
-            0% { opacity: 1; }
-            80% { opacity: 1; }
-            100% { opacity: 0; visibility: hidden; }
+            0% {
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                visibility: hidden;
+            }
         }
 
         .required {
@@ -702,6 +797,7 @@
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <!-- Loading Screen -->
     <div class="loading-overlay">
@@ -714,21 +810,36 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-content">
-            <div class="logo">MUKESH</div>
+            <div class="logo" >MUKESH</div>
             <ul class="nav-links">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#home" class="nav-link">
+                        <svg class="nav-icon" viewBox="0 0 24 24">
+                            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                        </svg>
+                    </a></li>
+                <li>
+                <li><a href="#skills" class="nav-link">
+                        <svg class="nav-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M22.7 19l-9.1-9.1c.9-2.3.4-5.1-1.6-7.1-2-2-4.7-2.5-7.1-1.6l-9.1-9.1c-.9-.9-2.2-.9-3.1 0s-.9 2.2 0 3.1l9.1 9.1c-2 2.3-2.5 5.1-1.6 7.1 2 2 4.7 2.5 7.1 1.6l9.1 9.1c.9.9 2.2.9 3.1 0s.9-2.2 0-3.1zM3.4 12.2c-.6.6-1.5.6-2.1 0s-.6-1.5 0-2.1l6.1-6.1c.6-.6 1.5-.6 2.1 0s.6 1.5 0 2.1l-6.1 6.1z" />
+                        </svg>
+                    </a></li>
+                <li><a href="#projects" class="nav-link">
+                        <svg class="nav-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z" />
+                        </svg>
+                    </a></li>
+                <li><a href="#contact" class="nav-link">
+                        <svg class="nav-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                        </svg>
+                    </a></li>
             </ul>
-            <div class="mobile-menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
     </nav>
+    <div style="height: 100px;"></div>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -768,13 +879,20 @@
         <h2 class="section-title">ABOUT ME</h2>
         <div class="about-content">
             <div class="about-text">
-                <p> I'm Mukesh Adhikari, a passionate software developer currently based in the vibrant city of Tokyo, Japan. At 26, I'm on a mission to revolutionize the e-commerce landscape in Nepal through innovative technology solutions.</p>
-                
-                <p>My journey in software development has equipped me with cutting-edge skills and a deep understanding of modern web technologies. I specialize in creating robust, scalable applications that drive business growth and enhance user experience.</p>
-                
-                <p>Currently, I'm working on an ambitious e-commerce platform project that aims to transform how businesses operate in Nepal. This project combines my technical expertise with my passion for empowering local entrepreneurs and connecting them with global markets.</p>
-                
-                <p>When I'm not coding, you'll find me exploring Tokyo's tech scene, learning about emerging technologies, and planning the next phase of my entrepreneurial journey.</p>
+                <p> I'm Mukesh Adhikari, a passionate software developer currently based in the vibrant city of Tokyo,
+                    Japan. At 26, I'm on a mission to revolutionize the e-commerce landscape in Nepal through innovative
+                    technology solutions.</p>
+
+                <p>My journey in software development has equipped me with cutting-edge skills and a deep understanding
+                    of modern web technologies. I specialize in creating robust, scalable applications that drive
+                    business growth and enhance user experience.</p>
+
+                <p>Currently, I'm working on an ambitious e-commerce platform project that aims to transform how
+                    businesses operate in Nepal. This project combines my technical expertise with my passion for
+                    empowering local entrepreneurs and connecting them with global markets.</p>
+
+                <p>When I'm not coding, you'll find me exploring Tokyo's tech scene, learning about emerging
+                    technologies, and planning the next phase of my entrepreneurial journey.</p>
             </div>
             <div class="about-image">
                 <div class="profile-card">
@@ -831,15 +949,17 @@
         <h2 class="section-title">FEATURED PROJECT</h2>
         <div class="project-highlight">
             <h3>🚀 Nepal E-commerce Platform</h3>
-            <p>Revolutionary e-commerce solution designed specifically for the Nepali market. This platform bridges the gap between local businesses and global opportunities, featuring advanced inventory management, multi-currency support, and localized payment gateways.</p>
+            <p>Revolutionary e-commerce solution designed specifically for the Nepali market. This platform bridges the
+                gap between local businesses and global opportunities, featuring advanced inventory management,
+                multi-currency support, and localized payment gateways.</p>
             <br>
             <p><strong>Key Features:</strong></p>
             <p>• Multi-vendor marketplace functionality<br>
-            • Integrated payment systems (eSewa, Khalti, International cards)<br>
-            • Real-time inventory tracking<br>
-            • Mobile-first responsive design<br>
-            • Advanced analytics and reporting<br>
-            • Multi-language support (Nepali/English)</p>
+                • Integrated payment systems (eSewa, Khalti, International cards)<br>
+                • Real-time inventory tracking<br>
+                • Mobile-first responsive design<br>
+                • Advanced analytics and reporting<br>
+                • Multi-language support (Nepali/English)</p>
             <br>
             <div class="cta-buttons">
                 <a href="#contact" class="btn btn-primary">Collaborate With Me</a>
@@ -884,7 +1004,8 @@
                             <p>Check out my code repositories</p>
                         </div>
                     </a>
-                    <a href="https://www.facebook.com/share/1EqePXck9x/?mibextid=wwXIfr" target="_blank" class="social-link">
+                    <a href="https://www.facebook.com/share/1EqePXck9x/?mibextid=wwXIfr" target="_blank"
+                        class="social-link">
                         <span class="social-icon">📘</span>
                         <div>
                             <strong>Facebook</strong>
@@ -916,27 +1037,18 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
-        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        
-        mobileMenuToggle.addEventListener('click', function() {
-            this.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-
         // Active navigation link
         const navItems = document.querySelectorAll('.nav-link');
-        
+
         function setActiveNav() {
             const sections = document.querySelectorAll('section');
             const scrollPos = window.scrollY + 100;
-            
+
             sections.forEach(section => {
                 const top = section.offsetTop;
                 const height = section.offsetHeight;
                 const id = section.getAttribute('id');
-                
+
                 if (scrollPos >= top && scrollPos < top + height) {
                     navItems.forEach(item => item.classList.remove('active'));
                     const activeItem = document.querySelector(`.nav-link[href="#${id}"]`);
@@ -946,14 +1058,8 @@
         }
 
         window.addEventListener('scroll', setActiveNav);
-        
-        // Close mobile menu when clicking on a link
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                mobileMenuToggle.classList.remove('active');
-            });
-        });
+        // Set active nav on load
+        setActiveNav();
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -966,24 +1072,24 @@
         });
 
         // Contact form handling
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             const email = document.getElementById('email').value;
             const phone = document.getElementById('phone').value;
             const name = document.getElementById('name').value;
             const message = document.getElementById('message').value;
             const errorDiv = document.getElementById('errorMessage');
-            
+
             // Clear previous errors
             errorDiv.textContent = '';
-            
+
             // Validate that at least email or phone is provided
             if (!email && !phone) {
                 errorDiv.textContent = 'Please provide either an email address or phone number.';
                 return;
             }
-            
+
             // Create WhatsApp message
             const whatsappMessage = `Hello Mukesh! 
             
@@ -992,41 +1098,65 @@ ${email ? `Email: ${email}` : ''}
 ${phone ? `Phone: ${phone}` : ''}
 
 Message: ${message}`;
-            
+
             // Encode message for URL
             const encodedMessage = encodeURIComponent(whatsappMessage);
-            
+
             // Your WhatsApp number (replace with your actual number)
-            const whatsappNumber = '+8180000000000'; // Replace with your actual WhatsApp number
-            
+            const whatsappNumber = '+81 8069245589'; // Replace with your actual WhatsApp number
+
             // Open WhatsApp
             const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
             window.open(whatsappURL, '_blank');
-            
+
             // Reset form
             this.reset();
-            
+
             // Show success message
-            alert('Thank you! You will be redirected to WhatsApp to send your message.');
+            // Using a custom message box instead of alert()
+            const messageBox = document.createElement('div');
+            messageBox.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: #333;
+                color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+                z-index: 10000;
+                text-align: center;
+                font-size: 1.1rem;
+            `;
+            messageBox.innerHTML = `
+                <p>Thank you! You will be redirected to WhatsApp to send your message.</p>
+                <button style="margin-top: 15px; padding: 10px 20px; background-color: #00ffff; color: black; border: none; border-radius: 5px; cursor: pointer;">OK</button>
+            `;
+            document.body.appendChild(messageBox);
+
+            messageBox.querySelector('button').addEventListener('click', () => {
+                document.body.removeChild(messageBox);
+            });
         });
 
         // Navbar scroll effect
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(0, 0, 0, 0.95)';
+                navbar.style.background = 'linear-gradient(135deg, rgba(0, 0, 0, 0.98), rgba(10, 25, 47, 0.98))';
             } else {
-                navbar.style.background = 'rgba(0, 0, 0, 0.9)';
+                navbar.style.background = 'linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(10, 25, 47, 0.95))';
             }
         });
 
         // Add some interactive elements
         document.querySelectorAll('.skill-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
+            card.addEventListener('mouseenter', function () {
                 this.style.background = 'linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 255, 0.2))';
             });
-            
-            card.addEventListener('mouseleave', function() {
+
+            card.addEventListener('mouseleave', function () {
                 this.style.background = 'linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1))';
             });
         });
@@ -1035,7 +1165,7 @@ Message: ${message}`;
         function typeWriter(element, text, speed = 100) {
             let i = 0;
             element.innerHTML = '';
-            
+
             function type() {
                 if (i < text.length) {
                     element.innerHTML += text.charAt(i);
@@ -1047,7 +1177,7 @@ Message: ${message}`;
         }
 
         // Initialize typing effect after page load
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             setTimeout(() => {
                 const heroTitle = document.querySelector('.hero h1');
                 const originalText = heroTitle.textContent;
@@ -1056,4 +1186,5 @@ Message: ${message}`;
         });
     </script>
 </body>
+
 </html>
