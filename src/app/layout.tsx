@@ -36,6 +36,8 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
   creator: siteConfig.name,
   publisher: siteConfig.name,
+  // ...existing code...
+  // alternates property defined below, removed duplicate
   formatDetection: {
     email: false,
     address: false,
