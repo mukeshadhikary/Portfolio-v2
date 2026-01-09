@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Orbitron, Inter } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/constants";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const orbitron = Orbitron({
   variable: "--font-orbitron",
@@ -162,6 +163,7 @@ export default function RootLayout({
         className={`${orbitron.variable} ${inter.variable} font-sans antialiased bg-[#0a0a0a] text-white overflow-x-hidden`}
       >
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
