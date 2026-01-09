@@ -5,20 +5,22 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { 
-  Send, 
-  CheckCircle, 
-  Github, 
-  Twitter, 
-  Facebook, 
-  Mail, 
+import {
+  Send,
+  CheckCircle,
+  Github,
+  Twitter,
+  Facebook,
+  Mail,
   MessageCircle,
-  Loader2 
+  Loader2,
+  AlertCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { siteConfig } from "@/lib/constants";
+import { sendContactEmail } from "@/components/email_context";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -30,39 +32,40 @@ const contactSchema = z.object({
 type ContactFormData = z.infer<typeof contactSchema>;
 
 const socialLinks = [
-  { 
-    icon: Github, 
-    href: siteConfig.links.github, 
+  {
+    icon: Github,
+    href: siteConfig.links.github,
     label: "GitHub",
     description: "Check out my code repositories",
-    color: "hover:text-white hover:border-white"
+    color: "hover:text-white hover:border-white",
   },
-  { 
-    icon: Facebook, 
-    href: siteConfig.links.facebook, 
+  {
+    icon: Facebook,
+    href: siteConfig.links.facebook,
     label: "Facebook",
     description: "Connect with me socially",
-    color: "hover:text-blue-500 hover:border-blue-500"
+    color: "hover:text-blue-500 hover:border-blue-500",
   },
-  { 
-    icon: Twitter, 
-    href: siteConfig.links.twitter, 
+  {
+    icon: Twitter,
+    href: siteConfig.links.twitter,
     label: "Twitter",
     description: "Follow my tech journey",
-    color: "hover:text-sky-400 hover:border-sky-400"
+    color: "hover:text-sky-400 hover:border-sky-400",
   },
-  { 
-    icon: Mail, 
-    href: `mailto:${siteConfig.links.email}`, 
+  {
+    icon: Mail,
+    href: `mailto:${siteConfig.links.email}`,
     label: "Email",
     description: "Direct communication",
-    color: "hover:text-red-400 hover:border-red-400"
+    color: "hover:text-red-400 hover:border-red-400",
   },
 ];
 
 export function ContactSection() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [emailError, setEmailError] = useState<string | null>(null);
 
   const {
     register,
@@ -75,37 +78,36 @@ export function ContactSection() {
 
   const onSubmit = async (data: ContactFormData) => {
     setIsLoading(true);
-    
-    // Create WhatsApp message
-    const whatsappMessage = `🌟 *New Portfolio Contact*
+    setEmailError(null);
 
-👤 *Name:* ${data.name}
-📧 *Email:* ${data.email}
-${data.phone ? `📱 *Phone:* ${data.phone}` : ""}
+    try {
+      // Send email via AWS SES
+      const emailResult = await sendContactEmail({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        message: data.message,
+      });
 
-💬 *Message:*
-${data.message}
+      if (!emailResult.success) {
+        throw new Error(emailResult.message);
+      }
 
----
-Sent from Portfolio Website`;
+      setIsSubmitted(true);
+      reset();
 
-    // Encode message for URL
-    const encodedMessage = encodeURIComponent(whatsappMessage);
-    const whatsappNumber = siteConfig.links.whatsapp.replace(/[^0-9]/g, "");
-    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-
-    // Simulate a small delay for UX
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    
-    // Open WhatsApp
-    window.open(whatsappURL, "_blank");
-    
-    setIsLoading(false);
-    setIsSubmitted(true);
-    reset();
-
-    // Reset success message after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000);
+      // Reset success message after 5 seconds
+      setTimeout(() => setIsSubmitted(false), 5000);
+    } catch (error) {
+      console.error("Failed to send email:", error);
+      setEmailError(
+        error instanceof Error
+          ? error.message
+          : "Failed to send message. Please try again."
+      );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -122,7 +124,8 @@ Sent from Portfolio Website`;
             LET&apos;S CONNECT
           </h2>
           <p className="text-white/60 max-w-2xl mx-auto">
-            Have a project in mind or want to collaborate? I&apos;d love to hear from you!
+            Have a project in mind or want to collaborate? I&apos;d love to hear
+            from you!
           </p>
           <div className="w-24 h-1 mx-auto mt-4 bg-linear-to-r from-cyan-400 via-purple-500 to-yellow-400 rounded-full" />
         </motion.div>
@@ -137,11 +140,13 @@ Sent from Portfolio Website`;
             <div className="relative p-8 bg-linear-to-br from-cyan-500/10 to-purple-500/10 border border-cyan-500/30 rounded-3xl backdrop-blur-md overflow-hidden">
               {/* Background decoration */}
               <div className="absolute top-0 right-0 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl" />
-              
+
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-6">
                   <MessageCircle className="w-6 h-6 text-cyan-400" />
-                  <h3 className="text-2xl font-bold text-white">Send me a message</h3>
+                  <h3 className="text-2xl font-bold text-white">
+                    Send me a message
+                  </h3>
                 </div>
 
                 <AnimatePresence mode="wait">
@@ -161,9 +166,12 @@ Sent from Portfolio Website`;
                       >
                         <CheckCircle className="w-10 h-10 text-green-400" />
                       </motion.div>
-                      <h4 className="text-xl font-bold text-white mb-2">Message Sent!</h4>
+                      <h4 className="text-xl font-bold text-white mb-2">
+                        Message Sent!
+                      </h4>
                       <p className="text-white/60">
-                        You&apos;ll be redirected to WhatsApp to complete sending your message.
+                        Thank you for reaching out. I&apos;ll get back to you as
+                        soon as possible!
                       </p>
                     </motion.div>
                   ) : (
@@ -228,8 +236,19 @@ Sent from Portfolio Website`;
                         )}
                       </Button>
 
+                      {emailError && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className="flex items-center gap-2 p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-sm"
+                        >
+                          <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                          <span>{emailError}</span>
+                        </motion.div>
+                      )}
+
                       <p className="text-xs text-white/40 text-center">
-                        Your message will be sent via WhatsApp for instant communication
+                        Your message will be sent directly to my inbox
                       </p>
                     </motion.form>
                   )}
@@ -245,8 +264,10 @@ Sent from Portfolio Website`;
             viewport={{ once: true }}
             className="space-y-4"
           >
-            <h3 className="text-xl font-bold text-white mb-6">Or connect with me on</h3>
-            
+            <h3 className="text-xl font-bold text-white mb-6">
+              Or connect with me on
+            </h3>
+
             {socialLinks.map((social, index) => (
               <motion.a
                 key={social.label}
@@ -274,7 +295,10 @@ Sent from Portfolio Website`;
 
             {/* WhatsApp Direct Link */}
             <motion.a
-              href={`https://wa.me/${siteConfig.links.whatsapp.replace(/[^0-9]/g, "")}`}
+              href={`https://wa.me/${siteConfig.links.whatsapp.replace(
+                /[^0-9]/g,
+                ""
+              )}`}
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
@@ -291,7 +315,9 @@ Sent from Portfolio Website`;
                 <h4 className="font-bold text-white group-hover:text-green-400 transition-colors">
                   WhatsApp
                 </h4>
-                <p className="text-sm text-white/60">Instant messaging & quick response</p>
+                <p className="text-sm text-white/60">
+                  Instant messaging & quick response
+                </p>
               </div>
             </motion.a>
           </motion.div>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mukesh Adhikari - Software Developer &amp; E-commerce Innovator</title>
+    <link>https://mukesh.adhykri.com</link>
+    <description>Portfolio of Mukesh Adhikari - Full-stack software developer and e-commerce innovator based in Tokyo, Japan</description>
+    <language>en-us</language>
+    <lastBuildDate>{{ date }}</lastBuildDate>
+    <atom:link href="https://mukesh.adhykri.com/feed.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Portfolio Home</title>
+      <link>https://mukesh.adhykri.com</link>
+      <guid>https://mukesh.adhykri.com</guid>
+      <description>Mukesh Adhikari - Software Developer &amp; E-commerce Innovator. Specialized in full-stack development, cloud solutions, and transforming e-commerce in Nepal.</description>
+      <category>Portfolio</category>
+      <pubDate>{{ date }}</pubDate>
+    </item>
+    
+    <item>
+      <title>About Me</title>
+      <link>https://mukesh.adhykri.com#about</link>
+      <guid>https://mukesh.adhykri.com#about</guid>
+      <description>Learn about Mukesh Adhikari's background, experience, and passion for software development and e-commerce innovation.</description>
+      <category>Biography</category>
+      <pubDate>{{ date }}</pubDate>
+    </item>
+    
+    <item>
+      <title>Skills &amp; Technologies</title>
+      <link>https://mukesh.adhykri.com#skills</link>
+      <guid>https://mukesh.adhykri.com#skills</guid>
+      <description>Technical skills including React, Next.js, Node.js, TypeScript, Python, AWS, and more.</description>
+      <category>Skills</category>
+      <pubDate>{{ date }}</pubDate>
+    </item>
+    
+    <item>
+      <title>Projects Portfolio</title>
+      <link>https://mukesh.adhykri.com#projects</link>
+      <guid>https://mukesh.adhykri.com#projects</guid>
+      <description>Showcase of professional projects and case studies demonstrating expertise in full-stack development and e-commerce solutions.</description>
+      <category>Projects</category>
+      <pubDate>{{ date }}</pubDate>
+    </item>
+    
+    <item>
+      <title>Contact Me</title>
+      <link>https://mukesh.adhykri.com#contact</link>
+      <guid>https://mukesh.adhykri.com#contact</guid>
+      <description>Get in touch with Mukesh Adhikari for collaboration, project inquiries, or to discuss opportunities.</description>
+      <category>Contact</category>
+      <pubDate>{{ date }}</pubDate>
+    </item>
+  </channel>
+</rss>

@@ -1,4 +1,37 @@
+# SEO-Optimized robots.txt for Mukesh Adhikari's Portfolio
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /api/*
+Disallow: /.env*
+Disallow: /private
 
+# Google Bot specific
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Bing Bot specific
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Other bots
+User-agent: MJ12bot
+Allow: /
+Crawl-delay: 1
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+# Sitemap configuration
 Sitemap: https://mukesh.adhykri.com/sitemap.xml
+
+# Crawl-delay for other bots
+Crawl-delay: 1
+Request-rate: 30/60
+

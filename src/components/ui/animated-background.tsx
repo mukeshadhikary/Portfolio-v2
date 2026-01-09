@@ -1,13 +1,54 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
+interface Particle {
+  id: number;
+  x: number;
+  y: number;
+  duration: number;
+  delay: number;
+  targetY: number;
+}
+
+function createParticles(): Particle[] {
+  if (typeof window === "undefined") return [];
+
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+
+  return Array.from({ length: 20 }, (_, i) => ({
+    id: i,
+    x: Math.random() * width,
+    y: Math.random() * height,
+    duration: Math.random() * 5 + 5,
+    delay: Math.random() * 5,
+    targetY: Math.random() * -200 - 100,
+  }));
+}
+
 export function AnimatedBackground() {
+  const [particles, setParticles] = useState<Particle[]>([]);
+
+  // Only set particles on client after mount to prevent hydration mismatch
+  useEffect(() => {
+    // Use setTimeout to defer particle generation to after initial render
+    const timer = setTimeout(() => {
+      setParticles(createParticles());
+    }, 0);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden">
+    <div
+      className="fixed inset-0 -z-10 overflow-hidden"
+      suppressHydrationWarning
+    >
       {/* Main gradient background */}
       <div className="absolute inset-0 bg-linear-to-br from-[#0a0a0a] via-[#1a1a2e] to-[#16213e]" />
-      
+
       {/* Animated gradient orbs */}
       <motion.div
         animate={{
@@ -50,35 +91,36 @@ export function AnimatedBackground() {
       />
 
       {/* Grid pattern overlay */}
-      <div 
+      <div
         className="absolute inset-0 opacity-[0.02]"
         style={{
           backgroundImage: `linear-gradient(rgba(0,255,255,0.1) 1px, transparent 1px),
                            linear-gradient(90deg, rgba(0,255,255,0.1) 1px, transparent 1px)`,
-          backgroundSize: '50px 50px',
+          backgroundSize: "50px 50px",
         }}
       />
 
-      {/* Floating particles */}
-      {[...Array(20)].map((_, i) => (
-        <motion.div
-          key={i}
-          initial={{
-            x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-            y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000),
-          }}
-          animate={{
-            y: [null, Math.random() * -200 - 100],
-            opacity: [0, 1, 0],
-          }}
-          transition={{
-            duration: Math.random() * 5 + 5,
-            repeat: Infinity,
-            delay: Math.random() * 5,
-          }}
-          className="absolute w-1 h-1 bg-cyan-400 rounded-full"
-        />
-      ))}
+      {/* Floating particles - only render after hydration to avoid mismatch */}
+      {particles.length > 0 &&
+        particles.map((particle) => (
+          <motion.div
+            key={particle.id}
+            initial={{
+              x: particle.x,
+              y: particle.y,
+            }}
+            animate={{
+              y: [null, particle.targetY],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: particle.duration,
+              repeat: Infinity,
+              delay: particle.delay,
+            }}
+            className="absolute w-1 h-1 bg-cyan-400 rounded-full"
+          />
+        ))}
     </div>
   );
 }

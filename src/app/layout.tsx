@@ -36,8 +36,19 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
   creator: siteConfig.name,
   publisher: siteConfig.name,
-  // ...existing code...
-  // alternates property defined below, removed duplicate
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   formatDetection: {
     email: false,
     address: false,
@@ -55,7 +66,15 @@ export const metadata: Metadata = {
         url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: `${siteConfig.name} - Portfolio`,
+        alt: `${siteConfig.name} - Software Developer & E-commerce Innovator`,
+        type: "image/png",
+      },
+      {
+        url: siteConfig.ogImage,
+        width: 800,
+        height: 600,
+        alt: `${siteConfig.name} - Software Developer & E-commerce Innovator`,
+        type: "image/png",
       },
     ],
   },
@@ -63,25 +82,26 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
-    images: [siteConfig.ogImage],
     creator: "@mukeshadhykari",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+    images: {
+      url: siteConfig.ogImage,
+      alt: siteConfig.name,
     },
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: siteConfig.name,
   },
   verification: {
     google: "your-google-verification-code",
   },
   alternates: {
     canonical: siteConfig.url,
+    languages: {
+      en: siteConfig.url,
+      ja: `${siteConfig.url}/ja`,
+    },
   },
   icons: {
     icon: "/favicon.ico",
